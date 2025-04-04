@@ -29,7 +29,7 @@ class RouteModel {
   final String testCentreName;
   final int expectedTime;
   final String shareUrl;
-  final List<StopResponse> listOfStops;
+  final List<Stop> listOfStops;
   final Map<String, double> startCoordinator;
   final Map<String, double> endCoordinator;
   final String isUser;
@@ -71,8 +71,8 @@ class RouteModel {
       testCentreName: json['TestCentreName'] ?? '', // Handle null
       expectedTime: json['expectedTime'] ?? 0, // Handle null
       shareUrl: json['shareUrl'] ?? '', // Handle null
-      listOfStops: List<StopResponse>.from(
-        (json['listOfStops'] ?? []).map((stop) => StopResponse.fromJson(stop)),
+      listOfStops: List<Stop>.from(
+        (json['listOfStops'] ?? []).map((stop) => Stop.fromJson(stop)),
       ), // Handle null
       startCoordinator: {
         'lat': json['startCoordinator']['lat'] ?? 0.0, // Handle null

@@ -1,4 +1,4 @@
-class TestCentreResponse {
+class TestCentre {
   final String id;
   final String name;
   final String passRate;
@@ -8,7 +8,7 @@ class TestCentreResponse {
   final DateTime createdAt;
   final DateTime updatedAt;
 
-  TestCentreResponse({
+  TestCentre({
     required this.id,
     required this.name,
     required this.passRate,
@@ -19,16 +19,20 @@ class TestCentreResponse {
     required this.updatedAt,
   });
 
-  factory TestCentreResponse.fromJson(Map<String, dynamic> json) {
-    return TestCentreResponse(
-      id: json['_id'] ?? '', // Handle null
-      name: json['name'] ?? '', // Handle null
-      passRate: json['passRate'] ?? '0', // Handle null
-      routes: json['routes'] ?? 0, // Handle null
-      address: json['address'] ?? '', // Handle null
-      postCode: json['postCode'] ?? '', // Handle null
-      createdAt: DateTime.parse(json['createdAt'] ?? DateTime.now().toIso8601String()), // Handle null
-      updatedAt: DateTime.parse(json['updatedAt'] ?? DateTime.now().toIso8601String()), // Handle null
+  factory TestCentre.fromJson(Map<String, dynamic> json) {
+    return TestCentre(
+      id: json['_id'] ?? '', 
+      name: json['name'] ?? '', 
+      passRate: json['passRate']?.toString() ?? '0', // Convert int to String
+      routes: json['routes'] ?? 0, 
+      address: json['address'] ?? '', 
+      postCode: json['postCode'] ?? '', 
+      createdAt: json['createdAt'] != null 
+          ? DateTime.parse(json['createdAt']) 
+          : DateTime.now(), // Handle null safely
+      updatedAt: json['updatedAt'] != null 
+          ? DateTime.parse(json['updatedAt']) 
+          : DateTime.now(), // Handle null safely
     );
   }
 }

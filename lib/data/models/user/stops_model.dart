@@ -1,12 +1,12 @@
-class StopResponse {
+class Stop {
   final String id;
   final double lat;
   final double lng;
 
-  StopResponse({required this.id, required this.lat, required this.lng});
+  Stop({required this.id, required this.lat, required this.lng});
 
-  factory StopResponse.fromJson(Map<String, dynamic> json) {
-    return StopResponse(
+  factory Stop.fromJson(Map<String, dynamic> json) {
+    return Stop(
       id: json['_id'],
       lat: json['lat'].toDouble(),
       lng: json['lng'].toDouble(),
