@@ -13,7 +13,7 @@ class _SecondScreenState extends State<SecondScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Second Screen'),
+        title: const Text('Second Screen Test'),
       ),
       body: Center(
         child: ElevatedButton(
