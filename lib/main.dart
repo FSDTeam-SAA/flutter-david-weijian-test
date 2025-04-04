@@ -1,3 +1,5 @@
+import 'package:david_weijian_test/core/routes/app_pages.dart';
+import 'package:david_weijian_test/core/routes/app_routes.dart';
 import 'package:david_weijian_test/presentation/screens/main_screen.dart';
 import 'package:david_weijian_test/presentation/screens/second_screen.dart';
 import 'package:david_weijian_test/presentation/theme/app_theme.dart';
@@ -18,11 +20,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: AppThemes.appThemeData,
-      initialRoute: '/',
-      getPages: [
-        GetPage(name: '/', page: () => MainScreen()),
-        GetPage(name: '/second', page: () => SecondScreen()),
-      ],
+      initialRoute: Routes.splash,
+      getPages: AppPages.routes,
     );
   }
 }
