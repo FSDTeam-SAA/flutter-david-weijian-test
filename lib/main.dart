@@ -1,5 +1,6 @@
 import 'package:david_weijian_test/presentation/screens/main_screen.dart';
 import 'package:david_weijian_test/presentation/screens/second_screen.dart';
+import 'package:david_weijian_test/presentation/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +15,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
+      theme: AppThemes.appThemeData,
       initialRoute: '/',
       getPages: [
         GetPage(name: '/', page: () => MainScreen()),
