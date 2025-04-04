@@ -1,0 +1,51 @@
+name: Build and Deploy Flutter Web
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+  push:
+    branches:
+      - main
+      - master
+      - develop
+
+jobs:
+  build-deploy:
+    name: Build and Deploy Web
+    runs-on: ubuntu-latest 
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+
+          
+      - name: Install web dependencies
+        run: |
+          sudo apt-get install -y libwebkit2gtk-4.0-dev
+          
+      - name: Get Flutter dependencies
+        run: flutter pub get
+        
+      - name: Build Web Release
+        run: flutter build web --release --base-href "/flutter-david-weijian-test/"
+
+        
+      - name: Upload Web Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: web-build
+          path: build/web/
+          
+      # Optional: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUBTOKENDAVID }}
+          publish_dir: ./build/web
+          force_orphan: true
