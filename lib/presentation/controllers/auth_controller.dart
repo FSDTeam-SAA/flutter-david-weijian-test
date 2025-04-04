@@ -6,13 +6,15 @@ import 'package:david_weijian_test/data/repositories/auth_repository_impl.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
-  final ApiClient _apiService = ApiClient();
   final SecureStorageService _secureStorage = SecureStorageService();
   var isLoading = false.obs;
   var isLoggedIn = false.obs;
   var accessToken = ''.obs;
 
-  final AuthRepositoryImpl _authRepository = AuthRepositoryImpl(storage: SecureStorageService());
+  final AuthRepositoryImpl _authRepository = AuthRepositoryImpl(
+    storage: SecureStorageService(),
+    apiClient: ApiClient(),
+  );
 
   @override
   void onInit() {

@@ -1,12 +1,14 @@
+import 'package:david_weijian_test/core/network/api_client.dart';
 import 'package:david_weijian_test/core/routes/app_pages.dart';
 import 'package:david_weijian_test/core/routes/app_routes.dart';
-import 'package:david_weijian_test/presentation/screens/main_screen.dart';
-import 'package:david_weijian_test/presentation/screens/second_screen.dart';
+import 'package:david_weijian_test/presentation/bindings/app_binding.dart';
 import 'package:david_weijian_test/presentation/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  ApiClient.init(); // Attach interceptors early
   runApp(const MyApp());
 }
 
@@ -20,6 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: AppThemes.appThemeData,
+      initialBinding: AppBindings(),
       initialRoute: Routes.splash,
       getPages: AppPages.routes,
     );

@@ -1,6 +1,7 @@
 import 'package:david_weijian_test/core/constants/api_constants.dart';
 import 'package:david_weijian_test/core/services/secure_storage_service.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 
 class ApiClient {
   static final Dio _dio = Dio(BaseOptions(
@@ -28,6 +29,10 @@ class ApiClient {
   static Future<String?> _getAuthToken() async {
     SecureStorageService secureStorage = SecureStorageService();
     String? token = await secureStorage.getAccessToken();
+
+    debugPrint('Token: $token');
+
+    // Check if token is not null and not empty
     if (token != null && token.isNotEmpty) {
       return token;
     }
@@ -42,9 +47,9 @@ class ApiClient {
   }
 
   // Example GET request
-  static Future<Response> get(String path) async => _dio.get(path);
+  Future<Response> get(String path) async => _dio.get(path);
   
   // Example POST request
-  static Future<Response> post(String path, dynamic data) async => 
+  Future<Response> post(String path, dynamic data) async => 
       _dio.post(path, data: data);
 }

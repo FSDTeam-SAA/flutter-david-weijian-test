@@ -7,8 +7,9 @@ import 'package:david_weijian_test/domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final SecureStorageService storage;
+  final ApiClient apiClient;
 
-  AuthRepositoryImpl({ required this.storage});
+  AuthRepositoryImpl({required this.storage, required this.apiClient});
 
   @override
   Future<void> logout() async {
@@ -18,7 +19,7 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<AuthResponse> login(String email, String password) async {
     final response = await 
-    ApiClient.post(
+    apiClient.post(
       ApiConstants.adminLoginEndpoint,
       {'email': email, 'password': password},
     );
