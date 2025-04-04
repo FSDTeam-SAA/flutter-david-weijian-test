@@ -1,4 +1,5 @@
-class BugReportResponse {
+// data/models/bug_report_model.dart
+class BugReport {
   final String id;
   final String project;
   final String screenName;
@@ -7,7 +8,7 @@ class BugReportResponse {
   final DateTime createdAt;
   final DateTime updatedAt;
 
-  BugReportResponse({
+  BugReport({
     required this.id,
     required this.project,
     required this.screenName,
@@ -17,8 +18,8 @@ class BugReportResponse {
     required this.updatedAt,
   });
 
-  factory BugReportResponse.fromJson(Map<String, dynamic> json) {
-    return BugReportResponse(
+  factory BugReport.fromJson(Map<String, dynamic> json) {
+    return BugReport(
       id: json['_id'],
       project: json['project'],
       screenName: json['screenName'],
@@ -27,5 +28,13 @@ class BugReportResponse {
       createdAt: DateTime.parse(json['createdAt']),
       updatedAt: DateTime.parse(json['updatedAt']),
     );
+  }
+
+  String get formattedCreatedAt {
+    return '${createdAt.day}/${createdAt.month}/${createdAt.year}';
+  }
+
+  String get formattedUpdatedAt {
+    return '${updatedAt.day}/${updatedAt.month}/${updatedAt.year}';
   }
 }

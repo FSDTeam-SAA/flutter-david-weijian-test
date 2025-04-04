@@ -1,10 +1,13 @@
 import 'package:david_weijian_test/core/routes/app_routes.dart';
+import 'package:david_weijian_test/domain/repositories/bug_report_repository.dart';
 import 'package:david_weijian_test/domain/repositories/user_repository.dart';
 import 'package:david_weijian_test/presentation/bindings/auth_binding.dart';
 import 'package:david_weijian_test/presentation/bindings/splash_binding.dart';
+import 'package:david_weijian_test/presentation/controllers/bug_report_controller.dart';
 import 'package:david_weijian_test/presentation/controllers/user_controller.dart';
 import 'package:david_weijian_test/presentation/screens/auth/login_screen.dart';
 import 'package:david_weijian_test/presentation/screens/dashboard/dashboard_screen.dart';
+import 'package:david_weijian_test/presentation/screens/nav_itmes/bug_report_nav_screen.dart';
 import 'package:david_weijian_test/presentation/screens/nav_itmes/user_nav_screen.dart';
 import 'package:david_weijian_test/presentation/screens/splash_screen.dart';
 import 'package:get/get.dart';
@@ -38,6 +41,17 @@ abstract class AppPages {
       binding: BindingsBuilder(() {
         Get.lazyPut<UserController>(
           () => UserController(userRepository: Get.find<UserRepository>()),
+        );
+      }),
+    ),
+
+    GetPage(
+      name: Routes.bugReport,
+      page: () => BugReportScreen(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut<BugReportController>(
+          () =>
+              BugReportController(repository: Get.find<BugReportRepository>()),
         );
       }),
     ),
