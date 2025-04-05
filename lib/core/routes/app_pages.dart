@@ -12,6 +12,7 @@ import 'package:david_weijian_test/presentation/screens/nav_itmes/bug_report_nav
 import 'package:david_weijian_test/presentation/screens/nav_itmes/nav_content/nav_content_screen.dart';
 import 'package:david_weijian_test/presentation/screens/nav_itmes/user_nav_screen.dart';
 import 'package:david_weijian_test/presentation/screens/splash_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 abstract class AppPages {
@@ -29,7 +30,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: Routes.dashboard,
-      page: () => const DashboardScreen(),
+      page: () =>  DashboardScreen(child: Container()), // Replace 'Container()' with the appropriate widget
       // bindings: [
       //   DashboardBinding(),
       //   UserBinding(),

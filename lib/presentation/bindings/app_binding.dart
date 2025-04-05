@@ -9,6 +9,7 @@ import 'package:david_weijian_test/domain/repositories/test_centre_repository.da
 import 'package:david_weijian_test/domain/repositories/user_repository.dart';
 import 'package:david_weijian_test/presentation/controllers/bug_report_controller.dart';
 import 'package:david_weijian_test/presentation/controllers/content_controller.dart';
+import 'package:david_weijian_test/presentation/controllers/navbar_controller.dart';
 import 'package:david_weijian_test/presentation/controllers/user_controller.dart';
 import 'package:get/get.dart';
 
@@ -56,6 +57,6 @@ class AppBindings extends Bindings {
       ),
     );
 
-    
+    Get.lazyPut<SidebarController>(() => SidebarController());
   }
 }
