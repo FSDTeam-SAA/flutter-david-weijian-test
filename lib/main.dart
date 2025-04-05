@@ -5,8 +5,10 @@ import 'package:david_weijian_test/presentation/bindings/app_binding.dart';
 import 'package:david_weijian_test/presentation/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 void main() {
+   setPathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
   ApiClient.init(); // Attach interceptors early
   runApp(const MyApp());
