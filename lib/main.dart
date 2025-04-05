@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 void main() {
-   setPathUrlStrategy();
+  setPathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
   ApiClient.init(); // Attach interceptors early
   runApp(const MyApp());
